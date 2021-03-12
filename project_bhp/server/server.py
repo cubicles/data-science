@@ -1,7 +1,12 @@
 from flask import Flask, request, jsonify
 import util
 
+
 app = Flask(__name__)
+
+@app.route("/")
+def home()
+    return render_template("/index.html")
 
 @app.route("/hello")
 def hello():
@@ -21,10 +26,12 @@ def predict_home_price():
     location = request.form['location']
     bedroom = int(request.form['bedroom'])
     bath = int(request.form['bath'])
-
+    
+    
     response = jsonify({
         'estimated_price': util.get_estimated_price(location,total_sqft,bedroom,bath)
     })
+    response.headers.add('Access-Control-Allow-Origin','*')
     return response
 
 if __name__ == "__main__":
