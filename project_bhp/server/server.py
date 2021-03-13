@@ -1,10 +1,12 @@
-from flask import Flask, request, jsonify
+from flask import Flask, render_template, request, jsonify
 import util
 
 
 app = Flask(__name__)
 
 @app.route("/")
+def main():
+    return render_template('/client/app.html')
 
 @app.route("/hello")
 def hello():
